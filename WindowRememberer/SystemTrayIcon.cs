@@ -20,6 +20,7 @@ namespace WindowRememberer
             notifyIcon.Icon = Resources.SystemTrayApp;
             notifyIcon.Text = "WindowRememberer"; // FIXME: Localizable string, if such a thing exists in WPF.
             notifyIcon.Visible = true;
+            notifyIcon.ContextMenuStrip = MainMenuFactory.Create();
         }
 
         public void Dispose()
