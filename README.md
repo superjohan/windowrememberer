@@ -7,3 +7,4 @@ The name may change. I couldn't think of anything better.
 ## Acknowledgements (aka stuff I copied from)
 
 https://www.codeproject.com/articles/290013/formless-system-tray-application
+http://stackoverflow.com/a/6485074
