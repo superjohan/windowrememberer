@@ -1,6 +1,8 @@
 # WindowRememberer
 
-The goal is to create a simple system tray app that can easily save and restore window positions, since Windows is ridiculously bad at it. An app for this purpose may exist already. If I find one that doesn't suck, I'll probably just stop working on this app.
+WindowRememberer is a simple system tray app for Windows that lets you save and restore window sizes and positions. This comes in handy when a e.g. a game changes the resolution and all your windows are suddenly all screwed up.
+
+Tested on Windows 10.
 
 The name may change. I couldn't think of anything better.
 
