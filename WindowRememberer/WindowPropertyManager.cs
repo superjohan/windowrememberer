@@ -67,7 +67,22 @@ namespace WindowRememberer
         {
             Process[] windowedProcesses = WindowedProcesses();
 
-            // TODO
+            foreach (Process process in windowedProcesses)
+            {
+                string processName = process.ProcessName;
+
+                if (! windowProperties.ContainsKey(processName))
+                {
+                    continue;
+                }
+
+                Rect rect = windowProperties[processName];
+
+                if (! MoveWindow(process.MainWindowHandle, rect.left, rect.top, rect.width, rect.height, true))
+                {
+                    Debug.WriteLine("Could not restore window for process: " + processName);
+                }
+            }
         }
 
         private static Process[] WindowedProcesses()
