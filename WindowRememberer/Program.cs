@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowRememberer
@@ -18,14 +14,11 @@ namespace WindowRememberer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Process[] processlist = Process.GetProcesses();
-
-            foreach (Process process in processlist)
+            using (SystemTrayIcon pi = new SystemTrayIcon())
             {
-                if (! String.IsNullOrEmpty(process.MainWindowTitle))
-                {
-                    Console.WriteLine("Process: {0} ID: {1} Window title: {2}", process.ProcessName, process.Id, process.MainWindowTitle);
-                }
+                pi.Display();
+
+                Application.Run();
             }
         }
     }
