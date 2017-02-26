@@ -4,6 +4,12 @@ The goal is to create a simple system tray app that can easily save and restore 
 
 The name may change. I couldn't think of anything better.
 
+## TODO
+
+- Save properties to disk.
+- Restoring maximized windows properly.
+- Multi-window support?
+
 ## Acknowledgements (aka stuff I copied from)
 
 https://www.codeproject.com/articles/290013/formless-system-tray-application
