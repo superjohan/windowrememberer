@@ -16,9 +16,25 @@ namespace WindowRememberer
             public int right;
             public int bottom;
 
+            public int width
+            {
+                get
+                {
+                    return right - left;
+                }
+            }
+
+            public int height
+            {
+                get
+                {
+                    return bottom - top;
+                }
+            }
+
             override public string ToString()
             {
-                return "(x: " + left + ", y: " + top + ", width: " + (right - left) + ", height: " + (bottom - top) + ")";
+                return "(x: " + left + ", y: " + top + ", width: " + width + ", height: " + height + ")";
             }
         }
 
