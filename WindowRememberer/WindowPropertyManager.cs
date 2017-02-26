@@ -46,7 +46,7 @@ namespace WindowRememberer
 
         private readonly Dictionary<string, Rect> windowProperties = new Dictionary<string, Rect>();
         
-        public void SaveWindowProperties(object sender, System.EventArgs e)
+        public void SaveWindowProperties(object sender, EventArgs e)
         {
             Process[] windowedProcesses = WindowedProcesses();
 
@@ -63,7 +63,7 @@ namespace WindowRememberer
             // TODO: Save to disk.
         }
 
-        public void RestoreWindowProperties(object sender, System.EventArgs e)
+        public void RestoreWindowProperties(object sender, EventArgs e)
         {
             Process[] windowedProcesses = WindowedProcesses();
 
