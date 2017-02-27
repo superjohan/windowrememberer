@@ -55,8 +55,7 @@ namespace WindowRememberer
                 Rect rect = new Rect();
                 if (GetWindowRect(process.MainWindowHandle, ref rect))
                 {
-                    string processName = process.ProcessName;
-                    windowProperties.Add(processName, rect);
+                    windowProperties[process.ProcessName] = rect;
                 }
             }
 
