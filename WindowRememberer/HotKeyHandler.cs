@@ -13,10 +13,21 @@ namespace WindowRememberer
 
         enum EventId
         {
-            Left = 1,
-            Right = 2,
-            Up = 3,
-            Down = 4
+            Left = Keys.Left,
+            Right = Keys.Right,
+            Up = Keys.Up,
+            Down = Keys.Down,
+            TopLeft = Keys.U,
+            TopRight = Keys.I,
+            BottomLeft = Keys.J,
+            BottomRight = Keys.K,
+            LeftThird = Keys.D,
+            LeftTwoThirds = Keys.E,
+            CenterThird = Keys.F,
+            RightTwoThirds = Keys.T,
+            RightThird = Keys.G,
+            Maximize = Keys.Return,
+            Center = Keys.C,
         }
 
         public HotKeyHandler(IntPtr handle)
@@ -24,10 +35,21 @@ namespace WindowRememberer
             int baseModifiers = 1 | 4 | 8; // alt - shift - win
 
             // TODO: maybe these need to be unregistered on quit?
-            RegisterHotKey(handle, (int)EventId.Left, baseModifiers, (int)Keys.Left);
-            RegisterHotKey(handle, (int)EventId.Right, baseModifiers, (int)Keys.Right);
-            RegisterHotKey(handle, (int)EventId.Up, baseModifiers, (int)Keys.Up);
-            RegisterHotKey(handle, (int)EventId.Down, baseModifiers, (int)Keys.Down);
+            RegisterHotKey(handle, (int)EventId.Left, baseModifiers, (int)EventId.Left);
+            RegisterHotKey(handle, (int)EventId.Right, baseModifiers, (int)EventId.Right);
+            RegisterHotKey(handle, (int)EventId.Up, baseModifiers, (int)EventId.Up);
+            RegisterHotKey(handle, (int)EventId.Down, baseModifiers, (int)EventId.Down);
+            RegisterHotKey(handle, (int)EventId.TopLeft, baseModifiers, (int)EventId.TopLeft);
+            RegisterHotKey(handle, (int)EventId.TopRight, baseModifiers, (int)EventId.TopRight);
+            RegisterHotKey(handle, (int)EventId.BottomLeft, baseModifiers, (int)EventId.BottomLeft);
+            RegisterHotKey(handle, (int)EventId.BottomRight, baseModifiers, (int)EventId.BottomRight);
+            RegisterHotKey(handle, (int)EventId.LeftThird, baseModifiers, (int)EventId.LeftThird);
+            RegisterHotKey(handle, (int)EventId.LeftTwoThirds, baseModifiers, (int)EventId.LeftTwoThirds);
+            RegisterHotKey(handle, (int)EventId.CenterThird, baseModifiers, (int)EventId.CenterThird);
+            RegisterHotKey(handle, (int)EventId.RightTwoThirds, baseModifiers, (int)EventId.RightTwoThirds);
+            RegisterHotKey(handle, (int)EventId.RightThird, baseModifiers, (int)EventId.RightThird);
+            RegisterHotKey(handle, (int)EventId.Maximize, baseModifiers, (int)EventId.Maximize);
+            RegisterHotKey(handle, (int)EventId.Center, baseModifiers, (int)EventId.Center);
         }
 
         public void OnHotKeyPressed(IntPtr param)
@@ -40,37 +62,32 @@ namespace WindowRememberer
 
         private void HandleEvent(Keys key)
         {
-            var screen = WindowUtils.CurrentWindowScreen();
+            var workingArea = WindowUtils.CurrentWindowScreen().WorkingArea;
             var newPosition = new Rect();
+            EventId eventId = (EventId)key;
 
-            switch (key)
+            switch (eventId)
             {
-                case Keys.Left:
-                    newPosition.left = 0;
-                    newPosition.top = 0;
-                    newPosition.width = screen.WorkingArea.Width / 2;
-                    newPosition.height = screen.WorkingArea.Height;
+                case EventId.Left:
+                    newPosition.width = workingArea.Width / 2;
+                    newPosition.height = workingArea.Height;
                     WindowUtils.SetCurrentWindowRect(newPosition);
                     break;
-                case Keys.Up:
-                    newPosition.left = 0;
-                    newPosition.top = 0;
-                    newPosition.width = screen.WorkingArea.Width;
-                    newPosition.height = screen.WorkingArea.Height / 2;
+                case EventId.Up:
+                    newPosition.width = workingArea.Width;
+                    newPosition.height = workingArea.Height / 2;
                     WindowUtils.SetCurrentWindowRect(newPosition);
                     break;
-                case Keys.Right:
-                    newPosition.left = screen.WorkingArea.Width / 2;
-                    newPosition.top = 0;
-                    newPosition.width = screen.WorkingArea.Width / 2;
-                    newPosition.height = screen.WorkingArea.Height;
+                case EventId.Right:
+                    newPosition.left = workingArea.Width / 2;
+                    newPosition.width = workingArea.Width / 2;
+                    newPosition.height = workingArea.Height;
                     WindowUtils.SetCurrentWindowRect(newPosition);
                     break;
-                case Keys.Down:
-                    newPosition.left = 0;
-                    newPosition.top = screen.WorkingArea.Height / 2;
-                    newPosition.width = screen.WorkingArea.Width;
-                    newPosition.height = screen.WorkingArea.Height / 2;
+                case EventId.Down:
+                    newPosition.top = workingArea.Height / 2;
+                    newPosition.width = workingArea.Width;
+                    newPosition.height = workingArea.Height / 2;
                     WindowUtils.SetCurrentWindowRect(newPosition);
                     break;
                 default:
