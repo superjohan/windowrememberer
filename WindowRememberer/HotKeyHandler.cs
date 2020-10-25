@@ -90,6 +90,77 @@ namespace WindowRememberer
                     newPosition.height = workingArea.Height / 2;
                     WindowUtils.SetCurrentWindowRect(newPosition);
                     break;
+                case EventId.TopLeft:
+                    newPosition.width = workingArea.Width / 2;
+                    newPosition.height = workingArea.Height / 2;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case EventId.TopRight:
+                    newPosition.left = workingArea.Width / 2;
+                    newPosition.width = workingArea.Width / 2;
+                    newPosition.height = workingArea.Height / 2;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case EventId.BottomLeft:
+                    newPosition.top = workingArea.Height / 2;
+                    newPosition.width = workingArea.Width / 2;
+                    newPosition.height = workingArea.Height / 2;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case EventId.BottomRight:
+                    newPosition.left = workingArea.Width / 2;
+                    newPosition.top = workingArea.Height / 2;
+                    newPosition.width = workingArea.Width / 2;
+                    newPosition.height = workingArea.Height / 2;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case EventId.LeftThird:
+                    newPosition.width = workingArea.Width / 3;
+                    newPosition.height = workingArea.Height;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case EventId.LeftTwoThirds:
+                    newPosition.width = (workingArea.Width / 3) * 2;
+                    newPosition.height = workingArea.Height;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case EventId.CenterThird:
+                    newPosition.left = workingArea.Width / 3;
+                    newPosition.width = workingArea.Width / 3;
+                    newPosition.height = workingArea.Height;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case EventId.RightTwoThirds:
+                    newPosition.left = workingArea.Width / 3;
+                    newPosition.width = (workingArea.Width / 3) * 2;
+                    newPosition.height = workingArea.Height;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case EventId.RightThird:
+                    newPosition.left = (workingArea.Width / 3) * 2;
+                    newPosition.width = workingArea.Width / 3;
+                    newPosition.height = workingArea.Height;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case EventId.Maximize:
+                    // FIXME: a real windows ass maximize could be better
+                    newPosition.width = workingArea.Width;
+                    newPosition.height = workingArea.Height;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case EventId.Center:
+                    var currentWindowRect = WindowUtils.GetCurrentWindowRect();
+
+                    if (currentWindowRect.isValid)
+                    {
+                        newPosition.left = (workingArea.Width / 2) - (currentWindowRect.width / 2);
+                        newPosition.top = (workingArea.Height / 2) - (currentWindowRect.height / 2);
+                        newPosition.width = currentWindowRect.width;
+                        newPosition.height = currentWindowRect.height;
+                        WindowUtils.SetCurrentWindowRect(newPosition);
+                    }
+
+                    break;
                 default:
                     Debug.WriteLine("Unexpected key: " + key);
                     break;
