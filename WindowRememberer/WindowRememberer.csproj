@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InvisibleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvisibleForm.Designer.cs">
+      <DependentUpon>InvisibleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenuFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
