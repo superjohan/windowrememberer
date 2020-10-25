@@ -18,7 +18,8 @@ namespace WindowRememberer
             {
                 pi.Display();
 
-                Application.Run();
+                InvisibleForm form = new InvisibleForm();
+                Application.Run(form);
             }
         }
     }
