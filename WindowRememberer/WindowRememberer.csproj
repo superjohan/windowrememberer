@@ -59,6 +59,7 @@
     <Compile Include="Rect.cs" />
     <Compile Include="SystemTrayIcon.cs" />
     <Compile Include="WindowPropertyManager.cs" />
+    <Compile Include="WindowUtils.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
