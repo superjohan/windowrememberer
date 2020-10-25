@@ -44,6 +44,12 @@ namespace WindowRememberer
             }
         }
 
+        public void setInvalid()
+        {
+            width = -1;
+            height = -1;
+        }
+
         override public string ToString()
         {
             return "(x: " + left + ", y: " + top + ", width: " + width + ", height: " + height + ")";
