@@ -22,8 +22,8 @@ namespace WindowRememberer
             int baseModifiers = 1 | 4 | 8; // alt - shift - win
 
             // TODO: maybe these need to be unregistered on quit?
-            RegisterHotKey(handle, (int)EventId.Left, baseModifiers, 0x25);
-            RegisterHotKey(handle, (int)EventId.Right, baseModifiers, 0x27);
+            RegisterHotKey(handle, (int)EventId.Left, baseModifiers, (int)Keys.Left);
+            RegisterHotKey(handle, (int)EventId.Right, baseModifiers, (int)Keys.Right);
         }
 
         public void OnHotKeyPressed(IntPtr param)
