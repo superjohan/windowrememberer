@@ -12,6 +12,14 @@ The code is quite likely non-idiomatic C#, to put it kindly.
 
 The name may change. I couldn't think of anything better.
 
+## Installation
+
+- [Download the latest release.](https://github.com/superjohan/windowrememberer/releases)
+- Unzip the zip and put the EXE file somewhere.
+- Run it.
+
+If you'd like to start the app when Windows starts, press Win+R, run `shell:startup`, and put a shortcut to the EXE in the opened folder.
+
 ## TODO
 
 - Save properties to disk.
