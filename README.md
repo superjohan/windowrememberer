@@ -19,6 +19,7 @@ The name may change. I couldn't think of anything better.
 - Multi-window support?
 - Add the Magnet-ish window resize stuff to the system tray app menu.
 - Preferences window to allow the user to choose their own modifiers.
+- Test with multiple displays. No idea if it works correctly.
 
 ## Acknowledgements (aka stuff I copied from)
 
