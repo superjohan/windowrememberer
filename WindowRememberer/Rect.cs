@@ -10,6 +10,14 @@ namespace WindowRememberer
         public int right;
         public int bottom;
 
+        public bool isValid
+        {
+            get
+            {
+                return width >= 0 && height >= 0;
+            }
+        }
+
         public int width
         {
             get
