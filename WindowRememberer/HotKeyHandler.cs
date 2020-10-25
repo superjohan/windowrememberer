@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace WindowRememberer
 {
@@ -26,8 +27,10 @@ namespace WindowRememberer
         }
 
         public void OnHotKeyPressed(IntPtr param)
-        {
-            Debug.WriteLine("got event: " + param);
+        {            
+            uint p = (uint)param.ToInt64();
+            Keys key = (Keys)((p & 0xffff0000) >> 16);
+            Debug.WriteLine("key: " + key);
         }
     }
 }
