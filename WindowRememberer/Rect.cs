@@ -16,6 +16,11 @@ namespace WindowRememberer
             {
                 return right - left;
             }
+            set
+            {
+                // expects left to have been set
+                right = left + value;
+            }
         }
 
         public int height
@@ -23,6 +28,11 @@ namespace WindowRememberer
             get
             {
                 return bottom - top;
+            }
+            set
+            {
+                // expects top to have been set
+                bottom = top + value;
             }
         }
 
