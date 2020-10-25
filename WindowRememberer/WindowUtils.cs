@@ -31,6 +31,23 @@ namespace WindowRememberer
             return Screen.FromHandle(handle);
         }
 
+        public static Rect GetCurrentWindowRect()
+        {
+            Rect rect = new Rect();
+            if (GetWindowRect(GetForegroundWindow(), ref rect))
+            {
+                return rect;
+            }
+            else
+            {
+                Debug.WriteLine("Could not get current window rect!");
+                
+                rect.setInvalid();
+
+                return rect;
+            }
+        }
+
         public static void SetCurrentWindowRect(Rect rect)
         {
             var handle = GetForegroundWindow();
