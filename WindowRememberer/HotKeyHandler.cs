@@ -34,7 +34,49 @@ namespace WindowRememberer
         {            
             uint p = (uint)param.ToInt64();
             Keys key = (Keys)((p & 0xffff0000) >> 16);
-            Debug.WriteLine("key: " + key);
+
+            HandleEvent(key);
+        }
+
+        private void HandleEvent(Keys key)
+        {
+            var screen = WindowUtils.CurrentWindowScreen();
+            var newPosition = new Rect();
+
+            switch (key)
+            {
+                case Keys.Left:
+                    newPosition.left = 0;
+                    newPosition.top = 0;
+                    newPosition.width = screen.WorkingArea.Width / 2;
+                    newPosition.height = screen.WorkingArea.Height;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case Keys.Up:
+                    newPosition.left = 0;
+                    newPosition.top = 0;
+                    newPosition.width = screen.WorkingArea.Width;
+                    newPosition.height = screen.WorkingArea.Height / 2;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case Keys.Right:
+                    newPosition.left = screen.WorkingArea.Width / 2;
+                    newPosition.top = 0;
+                    newPosition.width = screen.WorkingArea.Width / 2;
+                    newPosition.height = screen.WorkingArea.Height;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                case Keys.Down:
+                    newPosition.left = 0;
+                    newPosition.top = screen.WorkingArea.Height / 2;
+                    newPosition.width = screen.WorkingArea.Width;
+                    newPosition.height = screen.WorkingArea.Height / 2;
+                    WindowUtils.SetCurrentWindowRect(newPosition);
+                    break;
+                default:
+                    Debug.WriteLine("Unexpected key: " + key);
+                    break;
+            }
         }
     }
 }
