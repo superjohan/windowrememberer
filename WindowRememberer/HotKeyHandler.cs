@@ -14,7 +14,9 @@ namespace WindowRememberer
         enum EventId
         {
             Left = 1,
-            Right = 2
+            Right = 2,
+            Up = 3,
+            Down = 4
         }
 
         public HotKeyHandler(IntPtr handle)
@@ -24,6 +26,8 @@ namespace WindowRememberer
             // TODO: maybe these need to be unregistered on quit?
             RegisterHotKey(handle, (int)EventId.Left, baseModifiers, (int)Keys.Left);
             RegisterHotKey(handle, (int)EventId.Right, baseModifiers, (int)Keys.Right);
+            RegisterHotKey(handle, (int)EventId.Up, baseModifiers, (int)Keys.Up);
+            RegisterHotKey(handle, (int)EventId.Down, baseModifiers, (int)Keys.Down);
         }
 
         public void OnHotKeyPressed(IntPtr param)
